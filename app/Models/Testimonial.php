@@ -15,4 +15,9 @@ class Testimonial extends Model
         'name',
         'rating',
     ];
+
+    public function boardingHouse()
+    {
+        return $this->belongsTo(BoardingHouse::class);
+    }
 }

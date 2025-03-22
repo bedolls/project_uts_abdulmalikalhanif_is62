@@ -13,9 +13,7 @@ return new class extends Migration
     {
         Schema::create('rooms', function (Blueprint $table) {
                 $table->id();
-                $table->foreignId('boarding_house_id')
-                    ->constrained('boarding_houses') // Pastikan tabel tujuan sesuai
-                    ->cascadeOnDelete();
+                $table->foreignId('boarding_house_id')->constrained();
                 $table->string('name');
                 $table->string('room_type');
                 $table->integer('square_feet');

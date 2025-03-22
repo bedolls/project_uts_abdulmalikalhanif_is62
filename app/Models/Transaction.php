@@ -15,7 +15,7 @@ class transaction extends Model
         'room_id',
         'name',
         'email',
-        'phone_number',
+        'phone',
         'payment_method',
         'payment_status',
         'start_date',
@@ -26,7 +26,7 @@ class transaction extends Model
 
     public function boardingHouse()
     {
-        return $this->belongsTo(BoardingHouse::class, 'boarding_house_id');
+        return $this->belongsTo(BoardingHouse::class);
     }
 
     public function room()
