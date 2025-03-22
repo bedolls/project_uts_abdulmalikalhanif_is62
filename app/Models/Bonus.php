@@ -31,4 +31,5 @@ class Bonus extends Model
         return $this->hasMany(RoomImage::class);
     }
 
+
 }

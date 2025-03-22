@@ -14,6 +14,7 @@ class Room extends Model
         'name',
         'room_type',
         'square_feet',
+        'capatity',
         'price_per_month',
         'is_available',
     ];
@@ -32,5 +33,6 @@ class Room extends Model
     {
         return $this->hasMany(RoomImage::class);
     }
+
 
 }
