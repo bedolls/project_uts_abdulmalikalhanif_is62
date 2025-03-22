@@ -13,6 +13,10 @@ return new class extends Migration
     {
         Schema::create('bonuses', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('boarding_house_id')->constrained('boarding_houses')->cascadeOnDelete();
+            $table->string('image');
+            $table->string('name');
+            $table->string('description');
             $table->timestamps();
         });
     }

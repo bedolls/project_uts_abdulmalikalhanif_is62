@@ -12,9 +12,19 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('rooms', function (Blueprint $table) {
-            $table->id();
-            $table->timestamps();
-        });
+                $table->id();
+                $table->foreignId('boarding_house_id')
+                    ->constrained('boarding_houses') // Pastikan tabel tujuan sesuai
+                    ->cascadeOnDelete();
+                $table->string('name');
+                $table->string('room_type');
+                $table->integer('square_feet');
+                $table->integer('capacity');
+                $table->integer('price_per_month');
+                $table->boolean('is_available');
+                $table->timestamps();
+            });
+        
     }
 
     /**

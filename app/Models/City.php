@@ -2,43 +2,21 @@
 
 namespace App\Models;
 
-use App\Filament\Resources\CityResource\Pages;
-use App\Filament\Resources\CityResource\RelationManagers;
-use App\Models\City;
-use Filament\Forms;
-use Filament\Forms\Form;
-use Filament\Resources\Resource;
-use Filament\Tables;
-use Filament\Tables\Table;
-use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Database\Eloquent\SoftDeletingScope;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class City extends Model
 {
-    protected static ?string $model = City::class;
+    use HasFactory;
 
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected $fillable = [
+        'image',
+        'name',
+        'slug',
+    ];
 
-    public static function form(Form $form): Form
+    public function boardinghouses()
     {
-        return $form
-            ->schema([
-                Forms\Components\FileUpload::make('image')
-                ->image()
-                ->directory('City')
-                ->required()
-                ->columnSpan(2),
-                Forms\Components\TextInput::make('name')
-                ->required()
-                ->debounce(500)
-                ->reactive()
-                ->afterStateUpdated(function ($state, callable $set){
-                    $set('slug', Str::slug($state));
-                }),
-                Forms\Components\TextInput::make('slug')
-                ->required(),
-
-            ]);
+        return $this->hasMany(BoardingHouse::class);
     }
-
 }
